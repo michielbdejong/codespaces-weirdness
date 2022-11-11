@@ -1,7 +1,7 @@
 # CodeSpaces Weirdness
 
 Super weird:
-Open this repo in GitHub Codespaces, then:
+Open this repo in GitHub Codespaces, open the terminal, and then:
 ```
 ./test.sh
 # you will see HOST=oc1
@@ -25,3 +25,12 @@ Instead if the expected:
 It seems that intermediate build step results from the oc1 build are contaminating the oc2 build.
 
 It also works the other way around, if you build the oc2 image first and then the oc1 image, then whichever one you build second gets contaminated by the one you build first.
+
+Didn't believe what you saw? Want to see it again? You can replay this over and over again:
+```
+rm -rf servers
+git checkout -- servers
+test.sh
+```
+And it will display the broken behaviour again ("HOST=oc1").
+`touch servers/oc1/Dockerfile` instead of `touch servers/oc1/Dockerfile` also works.
