@@ -2,11 +2,7 @@
 set -e
 
 # base image for owncloud image:
-cd servers/apache-php
-docker build -t apache-php .
-
-# base image for oc1 image and oc2 image:
-cd ../owncloud
+cd servers/owncloud
 docker build -t owncloud .
 
 # image for oc1:
