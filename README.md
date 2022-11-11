@@ -11,15 +11,15 @@ touch servers/oc2/Dockerfile
 ```
 
 So even though I'm building both the oc1 and the oc2 image with --no-cache,
-in the output from the Docker build process you can already see:
+in the output from the Docker build process for oc2 you can already see:
 ```
 => [2/3] RUN ln -s /tls/oc1.crt /tls/server.cert
 => [3/3] RUN ln -s /tls/oc1.key /tls/server.key
 ```
 Instead of the expected:
 ```
-=> [2/3] RUN ln -s /tls/oc1.crt /tls/server.cert
-=> [3/3] RUN ln -s /tls/oc1.key /tls/server.key
+=> [2/3] RUN ln -s /tls/oc2.crt /tls/server.cert
+=> [3/3] RUN ln -s /tls/oc2.key /tls/server.key
 ```
 
 It seems that contents of the first Dockerfile the Docker engine reads is contaminating the Dockerfile contents for the second build.
