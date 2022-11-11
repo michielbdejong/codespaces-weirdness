@@ -5,11 +5,14 @@ See https://github.com/community/community/discussions/38878 for discussion.
 Super weird:
 Open this repo in GitHub Codespaces, open the terminal, and then:
 ```
-./test.sh
-# you will see HOST=oc1
-touch servers/oc2/Dockerfile
-./test.sh
-# you will see HOST=oc2
+docker build -t d1 -f Dockerfile.1
+docker build -t d2 -f Dockerfile.2
+docker run d2
+# you will see "Hello from d1"
+touch Dockerfile.2
+docker build -t d2 -f Dockerfile.2
+docker run d2
+# you will see "Hello from d1"
 ```
 
 So even though I'm building both the oc1 and the oc2 image with --no-cache,
