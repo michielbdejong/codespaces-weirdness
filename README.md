@@ -1,5 +1,7 @@
 # CodeSpaces Weirdness
 
+See https://github.com/community/community/discussions/38878 for discussion.
+
 Super weird:
 Open this repo in GitHub Codespaces, open the terminal, and then:
 ```
