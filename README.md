@@ -5,8 +5,11 @@ See https://github.com/community/community/discussions/38878 for discussion.
 Super weird:
 Open this repo in GitHub Codespaces, open the terminal, and then:
 ```
-docker build -t d1 --no-cache -f Dockerfile.1 .
-docker build -t d2 --no-cache -f Dockerfile.2 .
+cd d1
+docker build -t d1 --no-cache .
+cd ../d2
+docker build -t d2 --no-cache .
+cd ..
 docker run d2
 # you will see "Hello from d1"
 touch Dockerfile.2
