@@ -1,2 +1,3 @@
 FROM ubuntu
-CMD echo Hello from oc2
+RUN echo Hello from oc2 > greeting.txt
+CMD cat greeting.txt
