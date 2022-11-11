@@ -16,15 +16,17 @@ in the output from the Docker build process you can already see:
 => [2/3] RUN ln -s /tls/oc1.crt /tls/server.cert
 => [3/3] RUN ln -s /tls/oc1.key /tls/server.key
 ```
-Instead if the expected:
+Instead of the expected:
 ```
 => [2/3] RUN ln -s /tls/oc1.crt /tls/server.cert
 => [3/3] RUN ln -s /tls/oc1.key /tls/server.key
 ```
 
-It seems that intermediate build step results from the oc1 build are contaminating the oc2 build.
+It seems that contents of the first Dockerfile the Docker engine reads is contaminating the Dockerfile contents for the second build.
 
-It also works the other way around, if you build the oc2 image first and then the oc1 image, then whichever one you build second gets contaminated by the one you build first.
+It also works the other way around, if you build the oc2 image first and then the oc1 image, then the oc1 build will use build steps from the oc2 Dockerfile. Whichever one you build first contaminates the one you build second.
+
+Touching one of the two breaks the illusion of similarity.
 
 Didn't believe what you saw? Want to see it again? You can replay this over and over again:
 ```
