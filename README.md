@@ -34,3 +34,8 @@ test.sh
 ```
 And it will display the broken behaviour again ("HOST=oc1").
 `touch servers/oc1/Dockerfile` instead of `touch servers/oc1/Dockerfile` also works.
+
+Apparently the two Dockerfiles look alike to Docker, and it makes Docker not read the second one if it has already seen the the other one.
+Touching one of the two breaks the illusion of similarity.
+
+I would like to see what happens if you restart the Docker service in the workspace, but I don't know how to do that (it's not `service docker restart`, apparently).
