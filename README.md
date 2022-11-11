@@ -23,8 +23,8 @@ docker run d2
 # now you will see "Hello from d1"
 ```
 
-So even though I'm building both the oc1 and the oc2 image with --no-cache,
-in the output from the Docker build process for oc2 you can already see:
+So even when you're building the d2 image with --no-cache,
+in the output from the Docker build process you can already see:
 ```
 => [2/2] RUN echo Hello from d1 > greeting.txt
 ```
@@ -35,7 +35,7 @@ Instead of the expected:
 
 It seems that contents of the first Dockerfile the Docker engine reads is contaminating the Dockerfile contents for the second build.
 
-It also works the other way around, if you build the oc2 image first and then the oc1 image, then the oc1 build will use build steps from the oc2 Dockerfile. Whichever one you build first contaminates the one you build second.
+It also works the other way around, if you build the d2 image first and then the d1 image, then the d1 build will use build steps from the d2 Dockerfile. Whichever one you build first contaminates the one you build second.
 
 Another way to stop the contamination: `touch ../d1/Dockerfile` instead of `touch ./Dockerfile` also works. But only if you build it after touching. So:
 * build d1
