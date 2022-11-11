@@ -26,16 +26,29 @@ It seems that contents of the first Dockerfile the Docker engine reads is contam
 
 It also works the other way around, if you build the oc2 image first and then the oc1 image, then the oc1 build will use build steps from the oc2 Dockerfile. Whichever one you build first contaminates the one you build second.
 
-Touching one of the two breaks the illusion of similarity.
+Another way to stop the contamination: `touch servers/oc1/Dockerfile` instead of `touch servers/oc2/Dockerfile` also works. But only if you build it after touching. So:
+* build oc1
+* touch the oc1 Dockerfile
+* build oc2
+  -> result will be contaminated
+
+But:
+* build oc1
+* touch the oc1 Dockerfile
+* build oc1 again
+* build oc2
+  -> result will be correct
+
+So touching one of the two and then building the touched Dockerfile
+apparently breaks the illusion of similarity.
 
 Didn't believe what you saw? Want to see it again? You can replay this over and over again:
 ```
-rm -rf servers
+rm -r servers
 git checkout -- servers
 test.sh
 ```
 And it will display the broken behaviour again ("HOST=oc1").
-`touch servers/oc1/Dockerfile` instead of `touch servers/oc1/Dockerfile` also works.
 
 Apparently the two Dockerfiles look alike to Docker, and it makes Docker not read the second one if it has already seen the the other one.
 Touching one of the two breaks the illusion of similarity.
