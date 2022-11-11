@@ -6,21 +6,21 @@ Super weird:
 Open this repo in GitHub Codespaces, open the terminal, and then:
 ```
 cd d1
-docker build -t d1 --no-cache .
+docker build -t d1 .
 cd ../d2
 
-docker build -t d2 --no-cache .
+docker build -t d2 .
 docker run d2
 # you will see "Hello from d1"
 
 docker build -t d2 --no-cache .
 docker run d2
-# you will see "Hello from d1"
+# you will still see "Hello from d1"
 
 touch Dockerfile
-docker build -t d2 --no-cache .
+docker build -t d2 .
 docker run d2
-# you will see "Hello from d1"
+# now you will see "Hello from d1"
 ```
 
 So even though I'm building both the oc1 and the oc2 image with --no-cache,
