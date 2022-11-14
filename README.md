@@ -1,9 +1,11 @@
 # CodeSpaces Weirdness
 
-See https://github.com/community/community/discussions/38878 for discussion.
+See https://github.com/community/community/discussions/38878 for discussion. Super weird:
 
-Super weird:
-Open this repo in GitHub Codespaces, open the terminal, and then:
+
+This only happens when you use [GitHub Codespaces](https://github.com/codespaces/), not when you use [GitPod](https://gitpod.io) or (as far as we could test) when you run this on your own laptop.
+
+So open this repo in GitHub Codespaces, open the terminal, and then:
 ```
 cd d1
 docker build -t d1 .
