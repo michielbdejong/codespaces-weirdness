@@ -20,7 +20,7 @@ docker run d2
 touch Dockerfile
 docker build -t d2 .
 docker run d2
-# now you will see "Hello from d1"
+# now you will correctly see "Hello from d2"
 ```
 
 So even when you're building the d2 image with --no-cache,
