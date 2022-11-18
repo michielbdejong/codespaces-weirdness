@@ -1,6 +1,6 @@
 # CodeSpaces Weirdness
 
-See https://github.com/community/community/discussions/38878 for discussion. Super weird:
+See https://support.github.com/ticket/personal/0/1883475 for discussion. Super weird:
 
 
 This only happens when you use [GitHub Codespaces](https://github.com/codespaces/), not when you use [GitPod](https://gitpod.io) or (as far as we could test) when you run this on your own laptop.
