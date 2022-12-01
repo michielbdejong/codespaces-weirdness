@@ -1,6 +1,9 @@
 # CodeSpaces Weirdness
 
-See https://support.github.com/ticket/personal/0/1883475 for discussion. Super weird:
+UPDATE: This turned out to be a Moby Buildkit issue: https://github.com/moby/buildkit/issues/1368
+Workaround: Set `DOCKER_BUILDKIT=0`
+
+See https://github.com/orgs/community/discussions/38878 for discussion. Super weird:
 
 
 This only happens when you use [GitHub Codespaces](https://github.com/codespaces/), not when you use [GitPod](https://gitpod.io) or (as far as we could test) when you run this on your own laptop.
