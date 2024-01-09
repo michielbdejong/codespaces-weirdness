@@ -1,4 +1,6 @@
-# CodeSpaces Weirdness
+# CodeSpaces Previous Weirdness
+
+UPDATE January 2024: CodeSpaces now uses a Docker version >=23 so this weirdness no longer happens. Archiving this repo.
 
 UPDATE: This turned out to be a Moby Buildkit issue: https://github.com/moby/buildkit/issues/1368
 Workaround: Set `DOCKER_BUILDKIT=0`
